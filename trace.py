@@ -8,7 +8,8 @@ import numpy as np
 import sys
 
 def print_help():
-    print("traceBOSA [-wl (frequency/wavelength)] [workname] [save path]")
+    print("traceBOSA [-wl (frequency/wavelength)] [workname] [save path]
+['(no)flip']")
 
 """
 Constants, defs (load from jsons in future)
@@ -22,16 +23,19 @@ if mode != '-w' and mode != '-l':
     print_help()
     sys.exit(1)
 
-if len(sys.argv) > 2:
-    workname = sys.argv[2]
-else:
-    workname = 'trace_test'
+workname = sys.argv[2]
+path = sys.argv[3]
 
-if len(sys.argv) > 3:
-    path = sys.argv[3]
+flip_axes = sys.argv[4]
+if flip_axes == 'flip':
+    flip_axes = True
+elif flip_axes == 'noflip':
+    flip_axes = False
 else:
-    path = ''
+    print_help()
+    sys.exit(1) 
 
+# load from json in future
 ip = '152.78.75.209'
 port = 10000
 
