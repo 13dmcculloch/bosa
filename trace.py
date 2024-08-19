@@ -27,7 +27,7 @@ if mode != '-w' and mode != '-l':
     sys.exit(1)
 
 workname = sys.argv[2]
-path = sys.argv[3]
+path = sys.argv[3] + '/'
 
 flip_axes = sys.argv[4]
 if flip_axes == 'flip':
@@ -39,7 +39,7 @@ else:
     sys.exit(1) 
 
 # load from json in future
-ip = '152.78.75.209'
+ip = '152.78.75.219'
 port = 10000
 
 fname_raw = path + workname + '_raw'
