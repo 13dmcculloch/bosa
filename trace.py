@@ -2,14 +2,17 @@
 """
 trace.py [workname] [filepath]
 """
-import bosa
-import plot_generics
 import numpy as np
 import sys
 
+sys.path.append('/usr/local/include/bosa')
+
+import bosa
+import plot_generics
+
 def print_help():
-    print("traceBOSA [-wl (frequency/wavelength)] [workname] [save path]
-['(no)flip']")
+    print("traceBOSA [-wl (frequency/wavelength)] [workname] [save path] \
+[\'(no)flip\']")
 
 """
 Constants, defs (load from jsons in future)
@@ -69,8 +72,12 @@ bosa.destroy(dev)
 Plot
 """
 print("Plotting...", end='')
-w = np.hsplit(data, 2)[0]
-p = np.hsplit(data, 2)[1]
+if flip_axes:
+  w = np.hsplit(data, 2)[1]
+  p = np.hsplit(data, 2)[0]
+else:
+  w = np.hsplit(data, 2)[0]
+  p = np.hsplit(data, 2)[1]
 
 if mode == '-l':
     fig, ax = plot_generics.plot_generic(workname, 'Wavelength (nm)', 'Power (dBm)')
