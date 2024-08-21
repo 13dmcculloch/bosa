@@ -5,6 +5,7 @@ trace.py [workname] [filepath]
 import numpy as np
 import sys
 import os
+import json
 
 sys.path.append('/usr/local/include/bosa')
 
